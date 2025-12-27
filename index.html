@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نادي التكنولوجيا والابتكار</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Cairo', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        [lang="en"], [lang="fr"] {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .hero-pattern {
+            background-color: #667eea;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Dark Mode Styles */
+        .dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+        
+        .dark .bg-gray-50 {
+            background-color: #1a202c;
+        }
+        
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark .text-gray-700 {
+            color: #cbd5e0;
+        }
+        
+        .dark .text-gray-600 {
+            color: #a0aec0;
+        }
+        
+        .dark .text-gray-500 {
+            color: #718096;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #4a5568;
+        }
+        
+        .dark .from-purple-50 {
+            --tw-gradient-from: #2d3748;
+        }
+        
+        .dark .to-indigo-50 {
+            --tw-gradient-to: #374151;
+        }
+        
+        .dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Toggle Switch Styles */
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: #cbd5e0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background-color: #667eea;
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        
+        .toggle-switch.active::after {
+            transform: translateX(30px);
+        }               
+        </style>
+   <script type="text/javascript"
+   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+ emailjs.init({
+   publicKey: "XQZyR9KMvyaWExifH",
+ });
+})();
+        </script>
+        <script src="script.js "> </script>
+</head>
+<body class="smooth-scroll bg-gray-50" id="body">
+    
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-reverse space-x-3">
+                    <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800" data-ar="نادي التكنولوجيا والابتكار" data-en="Tech & Innovation Club" data-fr="Club de Technologie et Innovation">نادي التكنولوجيا والابتكار</h1>
+                        <p class="text-xs text-gray-500" data-ar="ثانوية مختار السوسي التأهيلية" data-en="Mokhtar Soussi High School" data-fr="Lycée Mokhtar Soussi">ثانوية مختار السوسي التأهيلية</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex space-x-reverse space-x-8 ml-6">
+                        <a href="#home" class="text-gray-700 hover:text-purple-600 font-semibold transition" data-ar="الرئيسية" data-en="Home" data-fr="Accueil">الرئيسية</a>
+                        <a href="#projects" class="text-gray-700 hover:text-purple-600 font-semibold transition" data-ar="المشاريع" data-en="Projects" data-fr="Projets">المشاريع</a>
+                        <a href="#register" class="text-gray-700 hover:text-purple-600 font-semibold transition" data-ar="التسجيل" data-en="Register" data-fr="Inscription">التسجيل</a>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button onclick="toggleLangMenu()" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                            </svg>
+                            <span class="text-sm font-semibold text-gray-700" id="currentLang">العربية</span>
+                        </button>
+                        <div id="langMenu" class="hidden absolute top-full mt-2 right-0 bg-white rounded-lg shadow-xl py-2 min-w-[120px]">
+                            <button onclick="changeLanguage('ar')" class="w-full text-right px-4 py-2 hover:bg-gray-100 text-gray-700">العربية</button>
+                            <button onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700">English</button>
+                            <button onclick="changeLanguage('fr')" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700">Français</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="toggle-switch" id="themeToggle" onclick="toggleTheme()"></div>
+                        <svg class="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-700" onclick="toggleMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-purple-600 font-semibold" data-ar="الرئيسية" data-en="Home" data-fr="Accueil">الرئيسية</a>
+                <a href="#projects" class="block text-gray-700 hover:text-purple-600 font-semibold" data-ar="المشاريع" data-en="Projects" data-fr="Projets">المشاريع</a>
+                <a href="#register" class="block text-gray-700 hover:text-purple-600 font-semibold" data-ar="التسجيل" data-en="Register" data-fr="Inscription">التسجيل</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto text-center text-white">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up" data-ar="ابدأ رحلتك في عالم التكنولوجيا" data-en="Start Your Tech Journey" data-fr="Commencez Votre Voyage Technologique">
+                ابدأ رحلتك في عالم التكنولوجيا
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;" 
+               data-ar="نادٍ جديد يجمع طلاب ثانوية مختار السوسي لتعلم البرمجة، الذكاء الاصطناعي، والروبوتيك. معاً نبدأ رحلة بناء مهاراتنا الرقمية"
+               data-en="A new club bringing together Mokhtar Soussi High School students to learn programming, AI, and robotics. Together we start building our digital skills"
+               data-fr="Un nouveau club réunissant les élèves du Lycée Mokhtar Soussi pour apprendre la programmation, l'IA et la robotique. Ensemble, nous construisons nos compétences numériques">
+                نادٍ جديد يجمع طلاب ثانوية مختار السوسي لتعلم البرمجة، الذكاء الاصطناعي، والروبوتيك. معاً نبدأ رحلة بناء مهاراتنا الرقمية
+            </p>
+            <a href="#register" class="inline-block btn-primary text-white font-bold py-4 px-10 rounded-full text-lg shadow-2xl animate-fade-in-up" style="animation-delay: 0.4s;"
+               data-ar="انضم إلينا الآن" data-en="Join Us Now" data-fr="Rejoignez-nous">
+                انضم إلينا الآن
+            </a>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4" data-ar="رؤيتنا" data-en="Our Vision" data-fr="Notre Vision">رؤيتنا</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 md:p-12 shadow-xl">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed text-center mb-6"
+                   data-ar="في عصر التحول الرقمي، يلعب التعليم التكنولوجي دوراً أساسياً في بناء مستقبلنا. نادينا الجديد في ثانوية مختار السوسي يهدف إلى تمكين التلاميذ من اكتساب المهارات الرقمية الأساسية، من البرمجة إلى الذكاء الاصطناعي، في بيئة تعليمية محفزة ومشجعة على الابتكار."
+                   data-en="In the digital transformation era, technology education plays a fundamental role in building our future. Our new club at Mokhtar Soussi High School aims to empower students to acquire essential digital skills, from programming to AI, in a motivating and innovation-encouraging learning environment."
+                   data-fr="À l'ère de la transformation numérique, l'enseignement technologique joue un rôle fondamental dans la construction de notre avenir. Notre nouveau club au Lycée Mokhtar Soussi vise à permettre aux élèves d'acquérir des compétences numériques essentielles, de la programmation à l'IA, dans un environnement d'apprentissage motivant et encourageant l'innovation.">
+                    في عصر التحول الرقمي، يلعب التعليم التكنولوجي دوراً أساسياً في بناء مستقبلنا. نادينا الجديد في ثانوية مختار السوسي يهدف إلى تمكين التلاميذ من اكتساب المهارات الرقمية الأساسية، من البرمجة إلى الذكاء الاصطناعي، في بيئة تعليمية محفزة ومشجعة على الابتكار.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2" data-ar="جديد" data-en="New" data-fr="Nouveau">جديد</div>
+                        <p class="text-gray-600" data-ar="نادي حديث التأسيس" data-en="Newly Founded Club" data-fr="Club Nouvellement Fondé">نادي حديث التأسيس</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2" data-ar="طموح" data-en="Ambitious" data-fr="Ambitieux">طموح</div>
+                        <p class="text-gray-600" data-ar="أهداف كبيرة" data-en="Big Goals" data-fr="Grands Objectifs">أهداف كبيرة</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2" data-ar="معاً" data-en="Together" data-fr="Ensemble">معاً</div>
+                        <p class="text-gray-600" data-ar="نبني المستقبل" data-en="Building the Future" data-fr="Construire l'Avenir">نبني المستقبل</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section id="projects" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4" data-ar="أنشطتنا" data-en="Our Activities" data-fr="Nos Activités">أنشطتنا</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-4 text-lg" data-ar="اكتشف المجالات التي نقدمها لتطوير مهاراتك" data-en="Discover the fields we offer to develop your skills" data-fr="Découvrez les domaines que nous proposons pour développer vos compétences">اكتشف المجالات التي نقدمها لتطوير مهاراتك</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1: Programming -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" data-ar="البرمجة" data-en="Programming" data-fr="Programmation">البرمجة</h3>
+                    <p class="text-gray-600 leading-relaxed"
+                       data-ar="تعلم لغات البرمجة الحديثة مثل Python و JavaScript وبناء تطبيقات الويب والموبايل من الصفر"
+                       data-en="Learn modern programming languages like Python and JavaScript and build web and mobile applications from scratch"
+                       data-fr="Apprenez les langages de programmation modernes comme Python et JavaScript et créez des applications web et mobiles à partir de zéro">
+                        تعلم لغات البرمجة الحديثة مثل Python و JavaScript وبناء تطبيقات الويب والموبايل من الصفر
+                    </p>
+                </div>
+                
+                <!-- Card 2: AI -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" data-ar="الذكاء الاصطناعي" data-en="Artificial Intelligence" data-fr="Intelligence Artificielle">الذكاء الاصطناعي</h3>
+                    <p class="text-gray-600 leading-relaxed"
+                       data-ar="اكتشف عالم التعلم الآلي وتطبيقات الذكاء الاصطناعي في حل المشاكل الواقعية"
+                       data-en="Discover the world of machine learning and AI applications in solving real-world problems"
+                       data-fr="Découvrez le monde de l'apprentissage automatique et des applications de l'IA pour résoudre des problèmes réels">
+                        اكتشف عالم التعلم الآلي وتطبيقات الذكاء الاصطناعي في حل المشاكل الواقعية
+                    </p>
+                </div>
+                
+                <!-- Card 3: Robotics -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" data-ar="الروبوتيك" data-en="Robotics" data-fr="Robotique">الروبوتيك</h3>
+                    <p class="text-gray-600 leading-relaxed"
+                       data-ar="صمم وبرمج الروبوتات باستخدام Arduino وشارك في المسابقات الوطنية والدولية"
+                       data-en="Design and program robots using Arduino and participate in national and international competitions"
+                       data-fr="Concevez et programmez des robots avec Arduino et participez à des compétitions nationales et internationales">
+                        صمم وبرمج الروبوتات باستخدام Arduino وشارك في المسابقات الوطنية والدولية
+                    </p>
+                </div>
+                
+                <!-- Card 4: Orientation -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4" data-ar="التوجيه الدراسي" data-en="Academic Guidance" data-fr="Orientation Académique">التوجيه الدراسي</h3>
+                    <p class="text-gray-600 leading-relaxed"
+                       data-ar="احصل على إرشادات مهنية وأكاديمية لاختيار التخصص المناسب ومسارك المهني في التكنولوجيا"
+                       data-en="Get professional and academic guidance to choose the right specialization and career path in technology"
+                       data-fr="Obtenez des conseils professionnels et académiques pour choisir la bonne spécialisation et carrière dans la technologie">
+                        احصل على إرشادات مهنية وأكاديمية لاختيار التخصص المناسب ومسارك المهني في التكنولوجيا
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="register" class="py-20 px-4 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4" data-ar="سجل الآن" data-en="Register Now" data-fr="Inscrivez-vous">سجل الآن</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-4 text-lg" data-ar="انضم إلى مجتمعنا وابدأ رحلتك التقنية" data-en="Join our community and start your tech journey" data-fr="Rejoignez notre communauté et commencez votre parcours technologique">انضم إلى مجتمعنا وابدأ رحلتك التقنية</p>
+            </div>
+            
+            <form onsubmit="handleSubmit(event)" class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 md:p-12 shadow-xl">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg" data-ar="الاسم الكامل" data-en="Full Name" data-fr="Nom Complet">الاسم الكامل</label>
+                    <input type="text" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition" 
+                           data-placeholder-ar="أدخل اسمك الكامل" data-placeholder-en="Enter your full name" data-placeholder-fr="Entrez votre nom complet" placeholder="أدخل اسمك الكامل">
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg" data-ar="البريد الإلكتروني" data-en="Email" data-fr="E-mail">البريد الإلكتروني</label>
+                    <input type="email" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition" placeholder="example@email.com">
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg" data-ar="المستوى الدراسي" data-en="Academic Level" data-fr="Niveau Scolaire">المستوى الدراسي</label>
+                    <select required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition" id="levelSelect">
+                        <option value="" data-ar="اختر المستوى" data-en="Choose level" data-fr="Choisissez le niveau">اختر المستوى</option>
+                        <option value="tc" data-ar="جذع مشترك" data-en="Common Core" data-fr="Tronc Commun">جذع مشترك</option>
+                        <option value="1bac" data-ar="السنة الأولى باكالوريا" data-en="First Year Baccalaureate" data-fr="Première Année Bac">السنة الأولى باكالوريا</option>
+                        <option value="2bac" data-ar="السنة الثانية باكالوريا" data-en="Second Year Baccalaureate" data-fr="Deuxième Année Bac">السنة الثانية باكالوريا</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg" data-ar="المجال المفضل" data-en="Preferred Field" data-fr="Domaine Préféré">المجال المفضل</label>
+                    <select required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition" id="fieldSelect">
+                        <option value="" data-ar="اختر المجال" data-en="Choose field" data-fr="Choisissez le domaine">اختر المجال</option>
+                        <option value="prog" data-ar="البرمجة" data-en="Programming" data-fr="Programmation">البرمجة</option>
+                        <option value="ai" data-ar="الذكاء الاصطناعي" data-en="Artificial Intelligence" data-fr="Intelligence Artificielle">الذكاء الاصطناعي</option>
+                        <option value="robot" data-ar="الروبوتيك" data-en="Robotics" data-fr="Robotique">الروبوتيك</option>
+                        <option value="guide" data-ar="التوجيه الدراسي" data-en="Academic Guidance" data-fr="Orientation Académique">التوجيه الدراسي</option>
+                    </select>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg" data-ar="لماذا تريد الانضمام؟" data-en="Why do you want to join?" data-fr="Pourquoi voulez-vous rejoindre?">لماذا تريد الانضمام؟</label>
+                    <textarea required rows="4" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition resize-none" 
+                              data-placeholder-ar="أخبرنا عن دوافعك واهتماماتك..." data-placeholder-en="Tell us about your motivations and interests..." data-placeholder-fr="Parlez-nous de vos motivations et intérêts..." placeholder="أخبرنا عن دوافعك واهتماماتك..."></textarea>
+                </div>
+                
+                <button type="submit" onclick="sendEmail()" class="w-full btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl" 
+                        data-ar="إرسال الطلب" data-en="Submit Application" data-fr="Envoyer la Demande">
+                    إرسال الطلب
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2" data-ar="نادي التكنولوجيا والابتكار" data-en="Tech & Innovation Club" data-fr="Club de Technologie et Innovation">نادي التكنولوجيا والابتكار</h3>
+                <p class="opacity-90" data-ar="ثانوية مختار السوسي التأهيلية" data-en="Mokhtar Soussi High School" data-fr="Lycée Mokhtar Soussi">ثانوية مختار السوسي التأهيلية</p>
+            </div>
+            
+            <div class="flex justify-center space-x-reverse space-x-6 mb-6">
+                <a href="#" class="hover:opacity-75 transition">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="#" class="hover:opacity-75 transition">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <p class="opacity-75" data-ar="&copy; 2024 نادي التكنولوجيا والابتكار. جميع الحقوق محفوظة." 
+               data-en="&copy; 2024 Tech & Innovation Club. All rights reserved." 
+               data-fr="&copy; 2024 Club de Technologie et Innovation. Tous droits réservés.">&copy; 2024 نادي التكنولوجيا والابتكار. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        let isDark = false;
+        
+        // Theme Toggle
+        function toggleTheme() {
+            isDark = !isDark;
+            const body = document.getElementById('body');
+            const toggle = document.getElementById('themeToggle');
+            
+            if (isDark) {
+                body.classList.add('dark');
+                toggle.classList.add('active');
+            } else {
+                body.classList.remove('dark');
+                toggle.classList.remove('active');
+            }
+        }
+        
+        // Language Functions
+        function toggleLangMenu() {
+            const menu = document.getElementById('langMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const html = document.documentElement;
+            
+            // Change direction for Arabic
+            if (lang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                document.getElementById('currentLang').textContent = 'العربية';
+            } else if (lang === 'en') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                document.getElementById('currentLang').textContent = 'English';
+            } else if (lang === 'fr') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'fr');
+                document.getElementById('currentLang').textContent = 'Français';
+            }
+            
+            // Update all text elements
+            document.querySelectorAll('[data-' + lang + ']').forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute('data-placeholder-' + lang) || text;
+                } else {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update select options
+            updateSelectOptions();
+            
+            // Close menu
+            document.getElementById('langMenu').classList.add('hidden');
+        }
+        
+        function updateSelectOptions() {
+            const levelSelect = document.getElementById('levelSelect');
+            const fieldSelect = document.getElementById('fieldSelect');
+            
+            Array.from(levelSelect.options).forEach(option => {
+                if (option.getAttribute('data-' + currentLang)) {
+                    option.textContent = option.getAttribute('data-' + currentLang);
+                }
+            });
+            
+            Array.from(fieldSelect.options).forEach(option => {
+                if (option.getAttribute('data-' + currentLang)) {
+                    option.textContent = option.getAttribute('data-' + currentLang);
+                }
+            });
+        }
+        
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const messages = {
+                ar: 'شكراً لتسجيلك! سنتواصل معك قريباً عبر البريد الإلكتروني.',
+                en: 'Thank you for registering! We will contact you soon via email.',
+                fr: 'Merci pour votre inscription ! Nous vous contacterons bientôt par e-mail.'
+            };
+            alert(messages[currentLang]);
+            event.target.reset();
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+        
+        // Close language menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const langMenu = document.getElementById('langMenu');
+            const langButton = event.target.closest('button[onclick="toggleLangMenu()"]');
+            
+            if (!langButton && !langMenu.contains(event.target)) {
+                langMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
